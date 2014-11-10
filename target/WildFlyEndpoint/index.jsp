@@ -6,12 +6,14 @@
 
 <script type="text/javascript">
 
-  var wsUri = "ws://localhost:8080/WildFlyEndpoint/game_endpoint";
+  var host = "<%= request.getRemoteHost() %>"
+  var wsUri = "ws://" + host + ":8080/WildFlyEndpoint/game_endpoint";
   var output;
 
   function init()
   {
     output = document.getElementById("output");
+    document.getElementById("output").innerHTML += wsUri;
     testWebSocket();
   }
 

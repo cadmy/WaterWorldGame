@@ -5,29 +5,22 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
 
 /**
- * ChatServer
- * @author Jiji_Sasidharan
+ * GameServer
+ * @author cadmy
  */
 @ServerEndpoint(value="/game_endpoint")
 @Singleton
 public class WildFlyEndpoint {
 
     @OnOpen
-    public void onOpen(Session userSession) {
+    public void onOpen(Session userSession) throws IOException {
         System.out.println("New request received. Id: " + userSession.getId());
-        userSession.getAsyncRemote().sendText("Hello websockets");
+        userSession.getBasicRemote().sendText("Hello websockets");
     }
 
-    /**
-     * Callback hook for Message Events.
-     *
-     * This method will be invoked when a client send a message.
-     *
-     * @param message The text message
-     * @param userSession The session of the client
-     */
     @OnMessage
     public void onMessage(String message, Session userSession) {
         System.out.println("Message Received: " + message);
