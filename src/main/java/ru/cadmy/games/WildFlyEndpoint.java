@@ -1,5 +1,7 @@
 package ru.cadmy.games;
 
+import org.apache.log4j.Logger;
+
 import javax.inject.Singleton;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -15,15 +17,17 @@ import java.io.IOException;
 @Singleton
 public class WildFlyEndpoint {
 
+    final static Logger logger = Logger.getLogger(WildFlyEndpoint.class);
+
     @OnOpen
     public void onOpen(Session userSession) throws IOException {
-        System.out.println("New request received. Id: " + userSession.getId());
+        logger.info("New request received. Id: " + userSession.getId());
         userSession.getBasicRemote().sendText("Hello websockets");
     }
 
     @OnMessage
     public void onMessage(String message, Session userSession) {
-        System.out.println("Message Received: " + message);
+        logger.info("Message Received: " + message);
         for (Session session : userSession.getOpenSessions()) {
             if (session.isOpen())
                 session.getAsyncRemote().sendText(message);
