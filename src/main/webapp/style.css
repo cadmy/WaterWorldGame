@@ -1,0 +1,13 @@
+.body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#myCanvas{
+    width = 800px;
+    height = 600px;
+    border-style: solid;
+    border-width: medium;
+}
+
+

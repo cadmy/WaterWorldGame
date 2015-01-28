@@ -22,8 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="WaterWorldGame" />
         <module name="WildFlyGame" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="WaterWorldGame" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
