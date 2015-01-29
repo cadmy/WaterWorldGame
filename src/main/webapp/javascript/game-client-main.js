@@ -5,7 +5,7 @@ var context
 
 function start(){
 	writeToScreen("Start");
-	webSocket = new WebSocket("ws://localhost:8080/WaterWorldGame/game_endpoint");
+	webSocket = new WebSocket("ws://waterworldgame-cadmy.rhcloud.com:8000/WaterWorldGame/game_endpoint");
 	
 	webSocket.onopen = function(event) {
 			onOpen(event);
