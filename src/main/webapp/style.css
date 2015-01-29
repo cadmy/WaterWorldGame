@@ -4,10 +4,18 @@
 }
 
 #myCanvas{
-    width = 800px;
-    height = 600px;
+	height: 600px;
+    width: 800px;
     border-style: solid;
     border-width: medium;
+	display:inline-block;
+	position: absolute;
+    top: 5px;
 }
 
-
+#messages{
+	position: absolute;
+    top: 5px;
+	right:5px;
+	display:inline-block;
+}

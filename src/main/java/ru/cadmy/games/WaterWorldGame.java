@@ -39,7 +39,9 @@ public class WaterWorldGame {
     public void onMessage(String userPosition, Session userSession) {
         logger.info("Message Received: " + userPosition);
         Player player = players.get(userSession);
-        player.setPosition(gson.fromJson(userPosition, Position.class));
+        Position position= gson.fromJson(userPosition, Position.class);
+        player.setX(position.getX());
+        player.setY(position.getY());
         sendPositionsData(userSession);
     }
 
@@ -50,8 +52,7 @@ public class WaterWorldGame {
             {
                 for (Player player : players.values())
                 {
-                    gson.toJson(player);
-                    session.getAsyncRemote().sendText(gson.toString());
+                    session.getAsyncRemote().sendText(gson.toJson(player));
                 }
             }
             else

@@ -8,7 +8,8 @@ import javax.websocket.Session;
 public class Player {
     String sessionName;
     String playerName;
-    Position position;
+    int x;
+    int y;
     int width;
     int height;
     String color;
@@ -16,8 +17,8 @@ public class Player {
     public Player(Session session, int x, int y, int width, int height, String color) {
         this.sessionName = session.getId();
         this.playerName = sessionName;
-        Position position = new Position(x, y);
-        this.position = position;
+        this.x = x;
+        this.y = y;
         this.width = width;
         this.height = height;
         this.color = color;
@@ -63,12 +64,20 @@ public class Player {
         this.color = color;
     }
 
-    public Position getPosition() {
-        return position;
+    public int getX() {
+        return x;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     @Override
@@ -80,9 +89,10 @@ public class Player {
 
         if (height != player.height) return false;
         if (width != player.width) return false;
+        if (x != player.x) return false;
+        if (y != player.y) return false;
         if (color != null ? !color.equals(player.color) : player.color != null) return false;
         if (playerName != null ? !playerName.equals(player.playerName) : player.playerName != null) return false;
-        if (position != null ? !position.equals(player.position) : player.position != null) return false;
         if (sessionName != null ? !sessionName.equals(player.sessionName) : player.sessionName != null) return false;
 
         return true;
@@ -92,7 +102,8 @@ public class Player {
     public int hashCode() {
         int result = sessionName != null ? sessionName.hashCode() : 0;
         result = 31 * result + (playerName != null ? playerName.hashCode() : 0);
-        result = 31 * result + (position != null ? position.hashCode() : 0);
+        result = 31 * result + x;
+        result = 31 * result + y;
         result = 31 * result + width;
         result = 31 * result + height;
         result = 31 * result + (color != null ? color.hashCode() : 0);
