@@ -3,4 +3,4 @@ The template for the game based on java ee which uses websockets, canvas, maven,
 
 Was deployed on JBOSS WILDFLY.
 
-Server + client
+Server (java ee) + client (javascript canvas)
