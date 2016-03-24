@@ -10,7 +10,7 @@ var prevUserPosition;
 
 function start(){
 	writeToScreen("Start");
-	webSocket = new WebSocket("ws://104.153.210.40.com:8000/WaterWorldGame/game_endpoint");
+	webSocket = new WebSocket("ws://104.153.210.40:8000/WaterWorldGame/game_endpoint");
 	
 	webSocket.onopen = function(event) {
 		onOpen(event);
