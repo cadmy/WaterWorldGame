@@ -32,11 +32,11 @@ function start(){
 	createjs.MotionGuidePlugin.install();
 	userMarker = new createjs.Shape();
 	userMarker.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 3);
-	userMarker.x = -100;
+    userMarker.x = -100;
     userMarker.y = -100;
 	stage.on("stagemousedown", function(evt) {
 		if (userMarker.x == -100 && userMarker.y == -100) {
-			userMarker.x = evt.stageX;;
+			userMarker.x = evt.stageX;
 			userMarker.y = evt.stageY;
 			stage.addChild(userMarker);
 			stage.update();
@@ -95,7 +95,6 @@ function writeToScreen(message) {
 	    document.getElementById('messages').innerHTML = "";
 	    messageNumber = 0;
 	}
-
 }		
 
 function doSend(x, y){

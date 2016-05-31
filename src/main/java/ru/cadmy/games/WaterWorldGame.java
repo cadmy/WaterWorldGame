@@ -55,7 +55,7 @@ public class WaterWorldGame {
             player = new Player(userSession, position.getX(), position.getY());
             players.put(userSession, player);
         }
-        sendPositionsData(userSession);
+        sendPositionsDataToEveryone(userSession);
     }
 
     private void sendPositionsData(Session userSession) {
@@ -69,6 +69,23 @@ public class WaterWorldGame {
                         session.getAsyncRemote().sendText(gson.toJson(player));
                     }
 
+                }
+            } else {
+                if (players.containsKey(session)) {
+                    logger.info("Session removed: " + session.getId());
+                    players.remove(session);
+                }
+            }
+        }
+    }
+
+    private void sendPositionsDataToEveryone(Session userSession) {
+        logger.info("sendPositionsData()");
+        for (Session session : userSession.getOpenSessions()) {
+            if (session.isOpen()) {
+                for (Player player : players.values()) {
+                    logger.info("Message sent: " + gson.toJson(player));
+                    session.getAsyncRemote().sendText(gson.toJson(player));
                 }
             } else {
                 if (players.containsKey(session)) {
